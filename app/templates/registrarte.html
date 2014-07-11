@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" 
+		  content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+	<title>Wanagow</title>
+	<link rel="stylesheet" href="normalize.css" />
+	 <!--{<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css' />-->
+	<link rel="stylesheet" href="/static/estilos.css" />
+	<link rel="stylesheet" href="/static/responsive.css" />
+</head>
+<body>
+	<!-- comentario de lo que sea -->
+	<header>
+		<figure id="logo">
+			<img src="logo.png" />
+		</figure>
+		<h1 id="titulo_header">Wanagow-Promotores</h1>
+		<figure id="avatar">
+			<img src="logo.jpg">	
+		</figure>
+		</header>
+		<section id="contenido">
+	    <form method="Post" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          {{form.as_p}}
+              Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            E-mail: <input type="email" name="E-mail" value="" size="50" />
+            <br />
+            Nombre: <input type="nombre" name="Nombre" value="" size="50" />
+            <br />
+             Password: <input type="password" name="password" value="" size="50" />
+            <br />
+
+	    	 <input type="submit" value="Registrarse">
+	    </form>
+		</section>
+	
+	
+		<footer>
+		<p><strong>Powered by Team Wanagow</strong></p>
+		<p>Wanagow 2013 ®</p>
+		<figure>
+			<img src="logo.png">
+		</figure>
+	</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
