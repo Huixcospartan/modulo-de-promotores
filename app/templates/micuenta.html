@@ -6,9 +6,9 @@
 	<meta name="viewport" 
 		  content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-	<title>Wanagow</title>
+	<title>Mi cuenta</title>
 	<link rel="stylesheet" href="normalize.css" />
-	<!--<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css' />-->
+	 <!--{<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css' />-->
 	<link rel="stylesheet" href="/static/estilos.css" />
 	<link rel="stylesheet" href="/static/responsive.css" />
 </head>
@@ -16,40 +16,38 @@
 	<!-- comentario de lo que sea -->
 	<header>
 		<figure id="logo">
-			<img src="/static/logo.png"/>
+			<img src="/static/logo.png" />
 		</figure>
 		<h1 id="titulo_header">Wanagow-Promotores</h1>
 		<figure id="avatar">
-			<img src="/static/logo.png" />
-			<figcaption></figcaption>
+			<figcation>
+				<strong><i>Bienvenido:{{request.user}}</i></strong>
+			</figcation>
+			<img src="/static/logo.png">
+			
 		</figure>
 	</header>
 	<nav>
 		<ul>
-			<li><a href="/miseventos">Mis Eventos</a></li>
+		<li><a href="/miseventos">Mis Eventos</a></li>
 		<li id="micuent"><a href="/micuenta">Mi Cuenta</a></li>
 		<li><a href="/cerrar">Cerrar Sesión</a></li>
-			<li id="flechita_nav"><a href="#"></a></li>
-			{% for cat in eventos %}
-			    <li><a href="{% url "categoria" cat.pk %}">{{evento}}</a></li>
-			{% endfor %}
-			<li id="publicar_nav"><a href="#">Publicar</a></li>
+		<li id="publicar_nav"><a href="{% url "add" %}">Nuevo Evento</a></li>
+			
 		</ul>
 	</nav>
-
 	<section id="contenido">
-	    <form method="post" enctype="multipart/form-data">
-	    <div id="form" >
-	        {% csrf_token %}
-		    {{form.as_p}}
-		    <input type="submit">
-		 </div>
-		</form>
-		
+		<h1>Usuario:{{usuario}}</h1>
+		{% if usuario.email %}
+		<h2>Correo:{{usuario.email}}</h2>
+		{% endif %}
 	</section>
 	<footer>
 		<p><strong>Powered by Team Wanagow</strong></p>
 		<p>Wanagow 2013 ®</p>
+		<figure>
+			<img src="/static/Proyect.png">
+		</figure>
 	</footer>
 </body>
 </html>

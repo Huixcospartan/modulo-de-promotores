@@ -14,12 +14,9 @@ urlpatterns = patterns('',
          name='logout'),
 
     url(r'^evento/$', 'app.views.evento', name='evento'),
-     #url(r'^Registrarse/$','app.views.Registrarse', name='Registrarse'),
-
+    url(r'^micuenta/$', 'app.views.micuenta', name='micuenta'),
+    url(r'^miseventos/$', 'app.views.miseventos', name='miseventos'),
     url(r'^add/$', 'app.views.add', name='add'),
-    
-    url(r'^Registrarse/$', 'Registrarse.as_view()', name='registrarse'),
-
     # url(r'^pulse/', include('pulse.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -6,7 +6,6 @@ from django.http import HttpResponse,HttpResponseRedirect, HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
 from models import * 
 from .forms import UserForm
-from django.core.urlresolvers import reverse_lazy
 
 
 
@@ -16,28 +15,21 @@ def evento(request):
     evento = Evento.objects.all()
     #promotor = User.objects.get(id=request.user.id)
     #evento = get_object_or_404(Evento,pk =2 ) #User.objects.get(id=request.user.id).id)    
-    template = "index.html"
+    template = "eventos.html"
     return render_to_response(template,locals())
 
-
- #def Registrarse(request):
+@login_required
+def micuenta(request):
     #import ipdb; ipdb.set_trace()
-     #evento = User.objects.all()
-    #promotor = User.objects.get(id=request.user.id)
-    #evento = get_object_or_404(Evento,pk =2 ) #User.objects.get(id=request.user.id).id)    
-     #template = "Registrarte.html"
-     #return render_to_response(template,locals())
+    usuario = User.objects.get(username=request.user.username)
+    template = "micuenta.html"
+    return render_to_response(template,locals())
 
-
-
-class Registrarse(FormView):
-    template_name = 'Registrarte.html'
-    form_class = UserForm
-    success_url = reverse_lazy('registrarse')
-
-    def from_valid(self, form):
-        user = form.save()
-        return super(Registrarse , self).form_valid(form)
+@login_required
+def miseventos(request):
+    evento = Evento.objects.all()
+    template = "miseventos.html"
+    return render_to_response(template,locals())
 
 @login_required
 def add(request):
