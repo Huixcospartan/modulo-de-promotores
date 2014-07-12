@@ -12,7 +12,7 @@ urlpatterns = patterns('',
 
     url(r'^cerrar/$' , 'django.contrib.auth.views.logout_then_login',
          name='logout'),
-
+    url(r'^newuser/$', 'app.views.newuser', name='newuser'),
     url(r'^evento/$', 'app.views.evento', name='evento'),
     url(r'^micuenta/$', 'app.views.micuenta', name='micuenta'),
     url(r'^miseventos/$', 'app.views.miseventos', name='miseventos'),

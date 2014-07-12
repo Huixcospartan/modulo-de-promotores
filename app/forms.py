@@ -12,5 +12,6 @@ class EventoForm(ModelForm):
         exclude = ('Promotor',)
         
 class UserForm(UserCreationForm):
-	pass
-		
+	nombre 		= forms.CharField(max_length = 45)
+	paterno	 	= forms.CharField(max_length = 45)
+	materno 	= forms.CharField(max_length = 45)	

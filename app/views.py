@@ -4,13 +4,34 @@ from django.template.context import RequestContext
 from forms import * 
 from django.http import HttpResponse,HttpResponseRedirect, HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate, logout
 from models import * 
-from .forms import UserForm
 
-
+def newuser(request):
+    template ='registrarse.html'
+    if request.method=='POST':
+        formulario = UserForm(request.POST)
+        if formulario.is_valid:
+            #import ipdb; ipdb.set_trace()
+            usuario             = formulario.save(commit=True)
+            promotor            = Promotor()
+            promotor.nombre     = formulario.cleaned_data['nombre']
+            promotor.paterno    = formulario.cleaned_data['paterno']
+            promotor.materno    = formulario.cleaned_data['materno']
+            promotor.usuario    = usuario
+            promotor.save()
+            #promotor.username   = formulario.cleaned_data['username']
+            #formulario.save()
+            return HttpResponseRedirect('/')
+    else:
+        formulario = UserForm()
+    return render_to_response(template,locals(), context_instance=RequestContext(request))
+    
 
 @login_required
-def evento(request):
+def evento(request):    
     #import ipdb; ipdb.set_trace()
     evento = Evento.objects.all()
     #promotor = User.objects.get(id=request.user.id)

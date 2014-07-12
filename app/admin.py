@@ -24,7 +24,7 @@ class TipoEventoAdmin(admin.ModelAdmin):
 	list_editable=('nombretipoevento','detallesevento')
 
 class EventoAdmin(admin.ModelAdmin):
-	list_display=('id','titulo','descripcipn','fechaevento','hora','tipoevento','costo','destino','activo','imagen','evento_imagen',)
+	list_display=('id','titulo','descripcipn','Promotor','fechaevento','hora','tipoevento','costo','destino','activo','imagen','evento_imagen','Promotor')
 	list_filter =('titulo',)
 	search_fields =('titulo','descripcipn',)
 	list_editable=('titulo','descripcipn','fechaevento','hora','tipoevento','costo','destino','activo','imagen')
@@ -58,8 +58,8 @@ class CulturalAdmin(admin.ModelAdmin):
 	#list_editable=('cliente',)
 
 class promotorAdmin(admin.ModelAdmin):
-	list_display=('id','username')
-	list_editable=('username',)
+	list_display=('id','nombre','paterno','materno','usuario')#'username')
+	list_editable=('nombre','nombre','paterno','materno','usuario')
 
 
 
