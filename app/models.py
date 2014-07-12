@@ -18,7 +18,7 @@ class Destino(models.Model):
     
     def __unicode__(self):
         return "%s" % (self.calle)
-
+        
 class TipoEvento(models.Model):
     nombretipoevento = models.CharField(('Tipo de Evento'),max_length = 45)
     detallesevento = models.CharField(('Detalles del Evento'),max_length = 45)

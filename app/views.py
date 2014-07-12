@@ -36,12 +36,16 @@ def miseventos(request):
 
 @login_required
 def add(request):
+    #import ipdb; ipdb.set_trace()
+    usuario  = User.objects.get(username=request.user.username)
+    promotor = Promotor.objects.get(usuario=request.user.id)
     if request.method =="POST":
         form = EventoForm(request.POST,request.FILES)
         if form.is_valid():
             evento = form.save(commit = False)
+            evento.Promotor = promotor
             evento.save()
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/miseventos")
         #return HttpResponseForbidden('allowed only via POST')
     else:
         form = EventoForm()

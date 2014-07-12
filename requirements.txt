@@ -28,7 +28,7 @@ pyobjc-framework-FSEvents==2.3.2a0
 pyobjc-framework-InputMethodKit==2.3.2a0
 pyobjc-framework-InstallerPlugins==2.3.2a0
 pyobjc-framework-InstantMessage==2.3.2a0
-pyobjc-framework-InterfaceBuilderKit==2.3.2a0
+pyobjc-framework-InterfaceBuilderKit==2.3.2a
 pyobjc-framework-LatentSemanticMapping==2.3.2a0
 pyobjc-framework-LaunchServices==2.3.2a0
 pyobjc-framework-Message==2.3.2a0

@@ -9,6 +9,7 @@ class EventoForm(ModelForm):
     
     class Meta:
         model = Evento
+        exclude = ('Promotor',)
         
 class UserForm(UserCreationForm):
 	pass
