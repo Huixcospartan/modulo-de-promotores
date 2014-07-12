@@ -16,7 +16,7 @@
 	<!-- comentario de lo que sea -->
 	<header>
 		<figure id="logo">
-			<img src="/static/logo.png" />
+			<img src="/static/wanagow.png" />
 		</figure>
 		<h1 id="titulo_header">Wanagow-Promotores</h1>
 		<figure id="avatar">
@@ -37,16 +37,20 @@
 		</ul>
 	</nav>
 	<section id="contenido">
-		<h1>Usuario:{{usuario}}</h1>
+		<h1>Usuario:{{promotor.username}}</h1>
 		{% if usuario.email %}
 		<h2>Correo:{{usuario.email}}</h2>
 		{% endif %}
+		<h3>Nombre:{{promotor.nombre}}</h3>
+		<h3>Apellido Paterno:{{promotor.paterno}}</h3>
+		<h3>Apellido Materno:{{promotor.materno}}</h3>
+		
 	</section>
 	<footer>
 		<p><strong>Powered by Team Wanagow</strong></p>
 		<p>Wanagow 2013 ®</p>
 		<figure>
-			<img src="/static/Proyect.png">
+			<img src="/static/wanagow.png">
 		</figure>
 	</footer>
 </body>

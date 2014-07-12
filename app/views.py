@@ -21,13 +21,16 @@ def evento(request):
 @login_required
 def micuenta(request):
     #import ipdb; ipdb.set_trace()
-    usuario = User.objects.get(username=request.user.username)
+    usuario  = User.objects.get(username=request.user.username)
+    promotor = Promotor.objects.get(usuario=request.user.id)
     template = "micuenta.html"
     return render_to_response(template,locals())
 
 @login_required
 def miseventos(request):
-    evento = Evento.objects.all()
+    #import ipdb; ipdb.set_trace()
+    promotor = Promotor.objects.get(usuario=request.user.id)
+    evento   = Evento.objects.filter(Promotor=promotor)
     template = "miseventos.html"
     return render_to_response(template,locals())
 

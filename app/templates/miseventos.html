@@ -16,7 +16,7 @@
 	<!-- comentario de lo que sea -->
 	<header>
 		<figure id="logo">
-			<img src="/static/logo.png" />
+			<img src="/static/wanagow.png" />
 		</figure>
 		<h1 id="titulo_header">Wanagow-Promotores</h1>
 		<figure id="avatar">
@@ -38,50 +38,18 @@
 	</nav>
 	<section id="contenido">
 			<ul>
-			{% for cat in eventos %}
-			 <article class="item">
-				<figure class="imagen_item">
-					<img src="{{cat.imagenevento}}">
-				</figure>
-				<h2 class="titulo_item">
-					<a href="{% url "evento" cat.pk %}">
-						{{cat}}
-					</a>
-				</h2>
-				<div class="tipoE">
-					<a id="tipoE">{{cat.tipoevento}}</a>
-				</div>
-				<div class="descripcion">
-					<a id="descripcion">{{cat.descripcipn}}</a>
-				</div>
-				<div class="fecha">
-					<a id="fecha">{{cat.fechaevento}}</a>
-				</div>
-				<div class="hora">
-					<a id="hora">{{cat.hora}}</a>
-				</div>
-				<div class="promotor">
-					 <a id="promotor">{{cat.Promotor}}</a>
-				</div>
-				<div class="costo">
-					 <a id="costo">${{cat.costoevento}}</a>
-				</div>
+				{% for even in evento %}
+					<h1>{{even.titulo}}</h1>
+					<p>{{even.descripcion}}</p>
+					<p>{{even.fechaevento}}</p>
+					<p>{{even.hora}}</p>
+					<p>{{even.tipoevento}}</p>
+					<p>{{even.Promotor}}</p>
+					<img src="{{even.imagenevento}}">
+				{% endfor%}
+					
 				
-				<div class="destino">
-					<a id="destino">{{cat.destino}}</a>
-				</div>
-				{% if cat.activo%}
-				<div class="activo">
-					<a id="activo">Disponible</a>
-				{% else %}
-					<div class="activo">
-					<a id="activo">No Disponible</a>
-				</div>
-				{% endif %}
-			</article>
-
-			{% endfor %}
-			
+				
 			</ul>
 
 	</section>
@@ -89,7 +57,7 @@
 		<p><strong>Powered by Team Wanagow</strong></p>
 		<p>Wanagow 2013 ®</p>
 		<figure>
-			<img src="/static/Proyect.png">
+			<img src="/static/wanagow.png">
 		</figure>
 	</footer>
 </body>

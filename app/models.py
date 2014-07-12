@@ -2,9 +2,12 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 
-
 class Promotor(models.Model):
+     nombre   = models.CharField(max_length = 45)
+     paterno  = models.CharField(max_length = 45)
+     materno  = models.CharField(max_length = 45)
      username = models.CharField(max_length = 45)
+     usuario  = models.ForeignKey(User) 
   
      def __unicode__(self):
         return str(self.username)   
