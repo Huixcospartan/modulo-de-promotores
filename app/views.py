@@ -55,21 +55,32 @@ def miseventos(request):
     template = "miseventos.html"
     return render_to_response(template,locals())
 
+# http://blog.byjakt.com/multiple-django-forms-in-one-form.html
+# http://stackoverflow.com/questions/5857363/using-multiple-forms-on-a-page-in-django
+# Buscar en
+#https://www.google.com.mx/search?noj=1&q=django+formview+multiple+forms&revid=538944700&sa=X&ei=XQTCU-zfNuSF8AHLn4GACw&ved=0CIQBENUCKAQ4Cg&biw=1366&bih=657
+
 @login_required
 def add(request):
     #import ipdb; ipdb.set_trace()
     usuario  = User.objects.get(username=request.user.username)
     promotor = Promotor.objects.get(usuario=request.user.id)
-    if request.method =="POST":
-        form = EventoForm(request.POST,request.FILES)
-        if form.is_valid():
+    
+    if request.method=='POST':
+        form = EventoForm(request.POST,request.FILES,prefix="sch")
+        ubicacion = DestinoForm(request.POST,prefix="loc")
+        
+        if form.is_valid() and ubicacion.is_valid():
+            destino = ubicacion.save()
             evento = form.save(commit = False)
+            evento.destino = destino
             evento.Promotor = promotor
             evento.save()
             return HttpResponseRedirect("/miseventos")
         #return HttpResponseForbidden('allowed only via POST')
     else:
         form = EventoForm()
+        ubicacion = DestinoForm()
     
     template = "form.html"
     return render_to_response(template,context_instance=RequestContext(request,locals()))

@@ -9,7 +9,12 @@ class EventoForm(ModelForm):
     
     class Meta:
         model = Evento
-        exclude = ('Promotor',)
+        exclude = ('Promotor','destino',)
+
+class DestinoForm(ModelForm):
+    class Meta:
+        model = Destino
+        
         
 class UserForm(UserCreationForm):
 	nombre 		= forms.CharField(max_length = 45)

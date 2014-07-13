@@ -25,7 +25,7 @@ class TipoEvento(models.Model):
     detallesevento    = models.CharField(('Detalles del Evento'),max_length = 45)
 
     def __unicode__(self):
-        return self.nombretipoevento
+        return self.nombretipoevento+' - '+self.detallesevento
    
 
 class Evento(models.Model):

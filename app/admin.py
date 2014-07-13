@@ -24,9 +24,9 @@ class TipoEventoAdmin(admin.ModelAdmin):
 	list_editable=('nombretipoevento','detallesevento')
 
 class EventoAdmin(admin.ModelAdmin):
-	list_display=('id','titulo','descripcipn','Promotor','fechaevento','hora','tipoevento','costo','destino','activo','imagen','evento_imagen','Promotor')
+	list_display=('id','titulo','descripcipn','Promotor','fechaevento','hora','tipoevento','costo','destino','activo','imagen','evento_imagen',)
 	list_filter =('titulo',)
-	search_fields =('titulo','descripcipn',)
+	search_fields =('titulo','descripcipn')
 	list_editable=('titulo','descripcipn','fechaevento','hora','tipoevento','costo','destino','activo','imagen')
 
 class CalendarioAdmin(admin.ModelAdmin):

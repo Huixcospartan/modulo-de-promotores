@@ -37,7 +37,7 @@
 		</ul>
 	</nav>
 	<section id="contenido">
-		<h1>Usuario:{{promotor.username}}</h1>
+		<h1>Usuario:{{request.user}}</h1>
 		{% if usuario.email %}
 		<h2>Correo:{{usuario.email}}</h2>
 		{% endif %}

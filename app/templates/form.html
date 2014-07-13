@@ -39,11 +39,12 @@
 
 	<section id="contenido">
 	    <form method="post" enctype="multipart/form-data">
-	    <div id="form" >
+	        <h1>Registar Evento</h1>
 	        {% csrf_token %}
 		    {{form.as_p}}
+		    <h2>Registra su ubicacion</h2>
+		    {{ubicacion.as_p}}
 		    <input type="submit">
-		 </div>
 		</form>
 		
 	</section>
