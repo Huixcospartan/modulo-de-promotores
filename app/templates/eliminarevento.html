@@ -6,7 +6,7 @@
 	<meta name="viewport" 
 		  content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-	<title>Mis Eventos</title>
+	<title>Principal</title>
 	<link rel="stylesheet" href="normalize.css" />
 	 <!--{<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css' />-->
 	<link rel="stylesheet" href="/static/estilos.css" />
@@ -37,21 +37,14 @@
 		</ul>
 	</nav>
 	<section id="contenido">
-			<ul>
-				{% for even in evento %}
-					
-					<h1><a href="/eventosdetalle/{{even.pk}}">{{even.titulo}}</a></h1>
-					<p>{{even.descripcion}}</p>
-					<p>{{even.fechaevento}}</p>
-					<p>{{even.hora}}</p>
-					<p>{{even.tipoevento}}</p>
-					<p>{{even.Promotor}}</p>
-					<img src="{{even.imagenevento}}">
-				{% endfor%}
-					
-				
-				
-			</ul>
+			<h1>Eliminar Evento</h1>
+			<p>Estas seguro que quieres eliminar {{evento.titulo}}</p>
+
+			<form method="post">{% csrf_token %}
+              {% csrf_token %}
+              <input type='submit' value='Si, Eliminar'>
+              <a href="/miseventos">No Cancelar</a> 
+        	</form>
 
 	</section>
 	<footer>

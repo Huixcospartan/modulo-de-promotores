@@ -6,7 +6,7 @@
 	<meta name="viewport" 
 		  content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-	<title>Mis Eventos</title>
+	<title>Principal</title>
 	<link rel="stylesheet" href="normalize.css" />
 	 <!--{<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css' />-->
 	<link rel="stylesheet" href="/static/estilos.css" />
@@ -37,22 +37,12 @@
 		</ul>
 	</nav>
 	<section id="contenido">
-			<ul>
-				{% for even in evento %}
-					
-					<h1><a href="/eventosdetalle/{{even.pk}}">{{even.titulo}}</a></h1>
-					<p>{{even.descripcion}}</p>
-					<p>{{even.fechaevento}}</p>
-					<p>{{even.hora}}</p>
-					<p>{{even.tipoevento}}</p>
-					<p>{{even.Promotor}}</p>
-					<img src="{{even.imagenevento}}">
-				{% endfor%}
-					
-				
-				
-			</ul>
-
+			<h4>Editar Evento</h4>
+			<form action="." method="post">{% csrf_token %}
+              {% csrf_token %}
+              {{formulario.as_p}}
+              <input type='submit' value='Registrarse'> 
+        </form>
 	</section>
 	<footer>
 		<p><strong>Powered by Team Wanagow</strong></p>

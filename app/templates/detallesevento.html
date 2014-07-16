@@ -6,7 +6,7 @@
 	<meta name="viewport" 
 		  content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-	<title>Mis Eventos</title>
+	<title>Principal</title>
 	<link rel="stylesheet" href="normalize.css" />
 	 <!--{<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css' />-->
 	<link rel="stylesheet" href="/static/estilos.css" />
@@ -37,22 +37,26 @@
 		</ul>
 	</nav>
 	<section id="contenido">
-			<ul>
-				{% for even in evento %}
-					
-					<h1><a href="/eventosdetalle/{{even.pk}}">{{even.titulo}}</a></h1>
-					<p>{{even.descripcion}}</p>
-					<p>{{even.fechaevento}}</p>
-					<p>{{even.hora}}</p>
-					<p>{{even.tipoevento}}</p>
-					<p>{{even.Promotor}}</p>
-					<img src="{{even.imagenevento}}">
-				{% endfor%}
-					
-				
-				
-			</ul>
+			<h4>Detalles Evento</h4>
+			<h1>{{evento.titulo}}</h1>
+			<p>{{evento.descripcion}}</p>
+			<p>{{evento.fechaevento}}</p>
+			<p>{{evento.hora}}</p>
+			<p>{{evento.tipoevento}}</p>
+			<p>{{evento.Promotor}}</p>
+			<img src="{{evento.imagenevento}}">
+			<a href='/eventoseliminar/{{evento.pk}}' id="eliminar">Eliminar</a>
+			<a href='/eventosactualizar/{{evento.pk}}' id="actualizar">Actualizar</a>
 
+
+			<form method="post" enctype="multipart/form-data">
+		        <h1>Actualizar Evento</h1>
+		        {% csrf_token %}
+			    {{formulario.as_p}}
+			    <h2>Actualizar ubicacion</h2>
+			    {{ubicacion.as_p}}
+			    <input type="submit">
+			</form>
 	</section>
 	<footer>
 		<p><strong>Powered by Team Wanagow</strong></p>
