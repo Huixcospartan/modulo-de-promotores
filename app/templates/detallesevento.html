@@ -47,16 +47,6 @@
 			<img src="{{evento.imagenevento}}">
 			<a href='/eventoseliminar/{{evento.pk}}' id="eliminar">Eliminar</a>
 			<a href='/eventosactualizar/{{evento.pk}}' id="actualizar">Actualizar</a>
-
-
-			<form method="post" enctype="multipart/form-data">
-		        <h1>Actualizar Evento</h1>
-		        {% csrf_token %}
-			    {{formulario.as_p}}
-			    <h2>Actualizar ubicacion</h2>
-			    {{ubicacion.as_p}}
-			    <input type="submit">
-			</form>
 	</section>
 	<footer>
 		<p><strong>Powered by Team Wanagow</strong></p>

@@ -46,7 +46,6 @@ def editar_micuenta(request):
     form = UserForm(request.POST, instance=usuario)
     if form.is_valid():
         form.save(commit=False)
-        promotor.nombre = form.cleaned_data['nombre']
         promotor.nombre     = form.cleaned_data['nombre']
         promotor.paterno    = form.cleaned_data['paterno']
         promotor.materno    = form.cleaned_data['materno']
@@ -59,6 +58,7 @@ def editar_micuenta(request):
     template = "editarcuenta.html"
     return render_to_response(template,context_instance=RequestContext(request,locals()))
 
+
 @login_required
 def miseventos(request):
     #import ipdb; ipdb.set_trace()
@@ -66,6 +66,13 @@ def miseventos(request):
     evento   = Evento.objects.filter(Promotor=promotor)
     template = "miseventos.html"
     return render_to_response(template,locals())
+
+class EventosDetallesView(DetailView):
+    model = Evento
+    context_object_name = 'evento'
+    
+    def get_template_names(self):
+        return 'detallesevento.html'
 
 @login_required
 def evento(request):    
@@ -85,33 +92,23 @@ def eliminar_evento(request,pk):
     template = "detallesevento.html"
     return render_to_response(template,context_instance=RequestContext(request,locals()))
 
-class EventosDetallesView(DetailView):
-    model = Evento
-    context_object_name = 'evento'
-    
-    def get_template_names(self):
-        return 'detallesevento.html'
-
 @login_required
 def actualizar_evento(request,pk):
-    import ipdb; ipdb.set_trace()
+    #import ipdb; ipdb.set_trace()
     usuario  = User.objects.get(username=request.user.username)
     promotor = Promotor.objects.get(usuario=request.user.id)
     evento      = get_object_or_404(Evento,pk=pk)
-    formulario  = EventoForm(request.POST,request.FILES,prefix="sch", instance=evento)
-    ubicacion = DestinoForm(request.POST,prefix="loc")
+    formulario  = EventoForm(request.POST,request.FILES, instance=evento)
         
-    if formulario.is_valid() and ubicacion.is_valid():
-        destino = ubicacion.save()
+    if formulario.is_valid():
         evento = formulario.save(commit = False)
-        evento.destino = destino
         evento.Promotor = promotor
         evento.save()
         return HttpResponseRedirect("/miseventos")   
     else:
         formulario = EventoForm()
 
-    template = "detallesevento.html"
+    template = "editarevento.html"
     return render_to_response(template,context_instance=RequestContext(request,locals()))
 
 
