@@ -94,9 +94,8 @@ def eliminar_evento(request,pk):
 
 @login_required
 def actualizar_evento(request,pk):
-    #import ipdb; ipdb.set_trace()
-    usuario  = User.objects.get(username=request.user.username)
-    promotor = Promotor.objects.get(usuario=request.user.id)
+    import ipdb; ipdb.set_trace()
+    promotor = request.user.promotor
     evento      = get_object_or_404(Evento,pk=pk)
     formulario  = EventoForm(request.POST,request.FILES, instance=evento)
         
@@ -115,18 +114,18 @@ def actualizar_evento(request,pk):
 @login_required
 def add(request):
     #import ipdb; ipdb.set_trace()
-    usuario  = User.objects.get(username=request.user.username)
-    promotor = Promotor.objects.get(usuario=request.user.id)
     
     if request.method=='POST':
-        form = EventoForm(request.POST,request.FILES,prefix="sch")
+        #usuario  = User.objects.get(username=request.user.username)
+        #promotor = Promotor.objects.get(usuario=request.user.id)
         ubicacion = DestinoForm(request.POST,prefix="loc")
+        form = EventoForm(request.POST,request.FILES,prefix="sch")
         
         if form.is_valid() and ubicacion.is_valid():
             destino = ubicacion.save()
             evento = form.save(commit = False)
             evento.destino = destino
-            evento.Promotor = promotor
+            evento.Promotor = request.user.promotor
             evento.save()
             return HttpResponseRedirect("/miseventos")
         #return HttpResponseForbidden('allowed only via POST')

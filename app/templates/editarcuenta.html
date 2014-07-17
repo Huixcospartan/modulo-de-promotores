@@ -36,17 +36,52 @@
 			
 		</ul>
 	</nav>
-	<section id="contenido">
-		<h1>Usuario:{{request.user}}</h1>
+	
+		<article class="editar_cuenta">
 
-		<form method="post" enctype="multipart/form-data">
-	        <h1>Editar Usuario</h1>
-	        {% csrf_token %}
-		    {{form.as_p}}
-		    <input type="submit">
-		</form>
+			<article id="editar">
+				<form method="post" enctype="multipart/form-data">
+			        <h2>Editar Usuario</h2>
+			        {% csrf_token %}
+				    {{form.as_p}}
+				    <input type="submit">
+				</form>
+			</article>
 
-	</section>
+
+			<article id='infocuenta'>
+				<h2>Informacion de Usuario</h2>
+				<p>
+					<span>Usuario:</span>
+					{{usuario.username}}
+				</p>
+				
+				{% if usuario.email %}
+					<p>
+						<span>Correo:</span>
+						{{usuario.email}}
+					</p>
+				{% endif %}
+
+				<p>
+					<span>Nombre:</span>
+					{{promotor.nombre}}
+				</p>
+				<p>
+					<span>Apellido Paterno:</span>
+					{{promotor.paterno}}
+				</p>
+				<p>
+					<span>Apellido Materno:</span>
+					{{promotor.materno}}
+				</p>
+				<figure >
+					<img src="/static/user.png">
+				</figure>
+
+			</article>
+
+		</article>
 	<footer>
 		<p><strong>Powered by Team Wanagow</strong></p>
 		<p>Wanagow 2013 ®</p>

@@ -36,24 +36,40 @@
 			
 		</ul>
 	</nav>
-	<section id="contenido">
-			<h4>Editar Evento</h4>
-			<form method="post" enctype="multipart/form-data">
-		        <h1>Actualizar Evento</h1>
+
+
+	<section class="registrar">
+		
+		<form method="post" enctype="multipart/form-data">
+	        
+	        <article class="evento">
+	        	<h1>Editar Evento</h1>
 		        {% csrf_token %}
 			    {{formulario.as_p}}
-			    <input type="submit">
-			</form>
+			    <input class='boton' value='Guardar' type="submit">
+	        </article>
+		    
+		    <article class="ubicacion detalles_evento">
+		    	<h4>Detalles Evento</h4>	
+				<h1>{{evento.titulo}}</h1>
+				<p>{{evento.descripcion}}</p>
+				<p>{{evento.fechaevento}}</p>
+				<p>{{evento.hora}}</p>
+				<p>{{evento.tipoevento}}</p>
+				<p>{{evento.Promotor}}</p>
+				<figure>
+					<img src="{{evento.imagenevento}}">
+				</figure>
+				
+		    </article>
+		    
+		    
+		</form>
 
-			<h4>Detalles Evento</h4>
-			<h1>{{evento.titulo}}</h1>
-			<p>{{evento.descripcion}}</p>
-			<p>{{evento.fechaevento}}</p>
-			<p>{{evento.hora}}</p>
-			<p>{{evento.tipoevento}}</p>
-			<p>{{evento.Promotor}}</p>
-			<img src="{{evento.imagenevento}}">
 	</section>
+
+
+	
 	<footer>
 		<p><strong>Powered by Team Wanagow</strong></p>
 		<p>Wanagow 2013 ®</p>

@@ -37,14 +37,39 @@
 		</ul>
 	</nav>
 	<section id="contenido">
-		<h1>Usuario:{{request.user}}</h1>
+		<article id='micuenta'>
+
+		<p>
+			<span>Usuario:</span>
+			{{usuario.username}}
+		</p>
+		
 		{% if usuario.email %}
-		<h2>Correo:{{usuario.email}}</h2>
+			<p>
+				<span>Correo:</span>
+				{{usuario.email}}
+			</p>
 		{% endif %}
-		<h3>Nombre:{{promotor.nombre}}</h3>
-		<h3>Apellido Paterno:{{promotor.paterno}}</h3>
-		<h3>Apellido Materno:{{promotor.materno}}</h3>
-		<a href="/editarmicuenta">Editar</a>
+
+		<p>
+			<span>Nombre:</span>
+			{{promotor.nombre}}
+		</p>
+		<p>
+			<span>Apellido Paterno:</span>
+			{{promotor.paterno}}
+		</p>
+		<p>
+			<span>Apellido Materno:</span>
+			{{promotor.materno}}
+		</p>
+		<figure >
+			<img src="/static/user.png">
+		</figure>
+		<a id='cuenta' class='boton' href="/editarmicuenta">Editar</a>
+		
+
+		</article>
 	</section>
 	<footer>
 		<p><strong>Powered by Team Wanagow</strong></p>

@@ -9,12 +9,12 @@ class EventoForm(ModelForm):
     
     class Meta:
         model = Evento
-        exclude = ('Promotor',)#'destino',)
+        exclude = ('Promotor','destino',)
 
 class DestinoForm(ModelForm):
     class Meta:
         model = Destino
-        
+
 #from django.contrib.auth.models import User        
 class UserForm(UserCreationForm):
 	nombre 		= forms.CharField(max_length = 45)

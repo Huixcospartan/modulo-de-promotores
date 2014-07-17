@@ -37,16 +37,35 @@
 		</ul>
 	</nav>
 	<section id="contenido">
-			<h4>Detalles Evento</h4>
-			<h1>{{evento.titulo}}</h1>
-			<p>{{evento.descripcion}}</p>
-			<p>{{evento.fechaevento}}</p>
-			<p>{{evento.hora}}</p>
-			<p>{{evento.tipoevento}}</p>
-			<p>{{evento.Promotor}}</p>
+			
+
+	<article id="detalles">
+		<h4>Detalles Evento</h4>
+		<h1><span>Titulo: </span>{{evento.titulo}}</h1>
+		<p><span>Descripcion: </span>{{evento.descripcipn}}</p>
+		<p><span>Fecha: </span>{{evento.fechaevento}}</p>
+		<p><span>Hora: </span>{{evento.hora}}</p>
+		<p><span>Tipo de Evento: </span>{{evento.tipoevento}}</p>
+		<p><span>Promotor: </span>{{evento.Promotor}}</p>
+		<p><span>Costo: </span>{{evento.costoevento}}</p>
+		<p><span>Destino: </span>{{evento.destino}}</p>
+
+		{% if evento.activo%}
+				<p id="activo">Disponible</p>
+			{% else %}
+				<p id="activo">No Disponible</p>
+		{% endif %}
+
+		<figure>
 			<img src="{{evento.imagenevento}}">
-			<a href='/eventoseliminar/{{evento.pk}}' id="eliminar">Eliminar</a>
-			<a href='/eventosactualizar/{{evento.pk}}' id="actualizar">Actualizar</a>
+		</figure>
+		
+	<a class='boton izquierda' href='/eventoseliminar/{{evento.pk}}' id="eliminar">Eliminar</a>
+	<a class='boton izquierda' href='/eventosactualizar/{{evento.pk}}' id="actualizar">Actualizar</a>
+
+	</article>
+
+			
 	</section>
 	<footer>
 		<p><strong>Powered by Team Wanagow</strong></p>

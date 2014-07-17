@@ -21,7 +21,7 @@
 		<h1 id="titulo_header">Wanagow-Promotores</h1>
 		<figure id="avatar">
 			<img src="/static/logo.png" />
-			<figcaption></figcaption>
+			<figcaption><strong><i>Bienvenido:{{request.user}}</i></strong></figcaption>
 		</figure>
 	</header>
 	<nav>
@@ -36,17 +36,24 @@
 			<li id="publicar_nav"><a href="#">Publicar</a></li>
 		</ul>
 	</nav>
-
-	<section id="contenido">
-	    <form method="post" enctype="multipart/form-data">
-	        <h1>Registar Evento</h1>
-	        {% csrf_token %}
-		    {{form.as_p}}
-		    <h2>Registra su ubicacion</h2>
-		    {{ubicacion.as_p}}
-		    <input type="submit">
-		</form>
+	<section class="registrar">
 		
+		<form method="post" enctype="multipart/form-data">
+	        <article class="evento">
+	        	<h1>Registar Evento</h1>
+		        {% csrf_token %}
+			    {{form.as_p}}
+	        </article>
+		    
+		    <article class="ubicacion">
+		    	<h2>Registra su ubicacion</h2>
+		    	{{ubicacion.as_p}}
+		    	<input class='boton' value='Guardar' type="submit">
+		    </article>
+		    
+		    
+		</form>
+
 	</section>
 	<footer>
 		<p><strong>Powered by Team Wanagow</strong></p>

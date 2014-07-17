@@ -22,27 +22,16 @@
       <img src="/static/logo.png">
      </figure>
     </header>
-    <div class="span5">
-                <div class="row-fluid">
-                  <div class="span2"></div>
-                  <div class="span8 registrar">
-                    
-                     
-                    <form method="post" enctype="multipart/form-data">
-                          {% csrf_token %}
-                          {{form.as_p}}
-                
-                      </div>
-
-                      <div class="control-group">
-                        <div class="controls">
-                          <label class="checkbox">
-                          <button type="submit" class="btn btn-info">Ingresar</button>
-                          <a class="reg" href="/newuser"> Registrarse </a>
-                        </div>
-                      </div>
-                    </form>
-            
+      <section id='login'>
+            <article>
+                <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{form.as_p}}
+                  <button class='boton'type="submit">Ingresar</button>
+                  <a class='boton' id= 'registrar' href="/newuser"> Registrarse </a>
+                </form>
+            </article>  
+      </section>
     <footer>
 		<p><strong>Powered by Team Wanagow</strong></p>
 		<p>Wanagow 2013 ®</p>

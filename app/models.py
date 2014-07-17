@@ -59,7 +59,7 @@ class Evento(models.Model):
       if self.costo == 0:
         return 'Gratis'
       else:
-        return self.costo
+        return "$ %s"%self.costo
 
 class Cliente(models.Model):
 

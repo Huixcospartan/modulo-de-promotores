@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    #'floppyforms',
     # Uncomment the next line to enable the admin:
   
     'django.contrib.admin',
@@ -141,8 +142,9 @@ INSTALLED_APPS = (
 
 from django.core.urlresolvers import reverse_lazy
 LOGIN_URL  = reverse_lazy('login')
-LOGIN_REDIRECT_URL = ('evento')
+LOGIN_REDIRECT_URL = ('miseventos')
 LOGOUT_URL = reverse_lazy('logout')
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.

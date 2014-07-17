@@ -37,21 +37,28 @@
 		</ul>
 	</nav>
 	<section id="contenido">
-			<ul>
-				{% for even in evento %}
+			{% for even in evento %}
+				<article class="item">
+					<figure class="imagen_item">
+						<a href="/eventosdetalle/{{even.pk}}"><img src="{{even.imagenevento}}"></a>
+					</figure>
 					
-					<h1><a href="/eventosdetalle/{{even.pk}}">{{even.titulo}}</a></h1>
-					<p>{{even.descripcion}}</p>
-					<p>{{even.fechaevento}}</p>
-					<p>{{even.hora}}</p>
-					<p>{{even.tipoevento}}</p>
-					<p>{{even.Promotor}}</p>
-					<img src="{{even.imagenevento}}">
-				{% endfor%}
+					<h2 class="titulo_item">
+						<a href="/eventosdetalle/{{even.pk}}">
+							{{even.titulo}} 
+						</a>
+					</h2>
 					
-				
-				
-			</ul>
+					<div class="autor_item">
+						{{even.fechaevento}}
+						 <a id="costo">{{even.costoevento}}</a>
+					</div>
+					
+					<div class="datos_item">
+						<a class="tag_item">{{even.descripcipn}}</a>
+					</div>
+				</article>
+			{% endfor%}
 
 	</section>
 	<footer>
