@@ -6,7 +6,8 @@ from django.core.context_processors import csrf
 from django.shortcuts import render_to_response
 
 class EventoForm(ModelForm):
-    
+    calle 				= forms.CharField(max_length = 45)
+    codigoPostal 		= forms.IntegerField()
     class Meta:
         model = Evento
         exclude = ('Promotor','destino',)
