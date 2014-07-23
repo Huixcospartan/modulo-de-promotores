@@ -30,7 +30,7 @@ class TipoEvento(models.Model):
 
 class Evento(models.Model):
     titulo      = models.CharField(max_length = 45)
-    descripcipn = models.CharField(('Descripcion'),max_length = 45)
+    descripcipn = models.TextField(('Descripcion'), max_length = 45)
     fechaevento = models.DateField(('Fecha de Evento'),auto_now_add=False)
     hora        = models.TimeField(auto_now_add=False)
     tipoevento  = models.ForeignKey(TipoEvento)

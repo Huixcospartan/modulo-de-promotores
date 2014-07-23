@@ -14,7 +14,7 @@ def newuser(request):
     template ='registrarse.html'
     if request.method=='POST':
         formulario = UserForm(request.POST)
-        if formulario.is_valid:
+        if formulario.is_valid():
             #import ipdb; ipdb.set_trace()
             usuario             = formulario.save(commit=True)
             promotor            = Promotor()
@@ -97,20 +97,19 @@ def actualizar_evento(request,pk):
     #import ipdb; ipdb.set_trace()
     promotor = request.user.promotor
     evento      = get_object_or_404(Evento,pk=pk)
+    destino       = get_object_or_404(Destino,pk=evento.destino.id)
     formulario  = EventoForm(request.POST,request.FILES, instance=evento)
-        
     if formulario.is_valid():
-        evento = formulario.save(commit = False)
-        destino                     = Destino()
+        evento                      = formulario.save(commit = False)
         destino.calle               = formulario.cleaned_data['calle']
         destino.codigopostal        = formulario.cleaned_data['codigoPostal']
         destino.save()
         evento.destino              = destino
-        evento.Promotor = promotor
+        evento.Promotor             = promotor
         evento.save()
         return HttpResponseRedirect("/miseventos")   
     else:
-        formulario = EventoForm()
+        formulario = EventoForm(instance=evento)
 
     template = "editarevento.html"
     return render_to_response(template,context_instance=RequestContext(request,locals()))
@@ -125,13 +124,11 @@ def add(request):
         form = EventoForm(request.POST,request.FILES)
         if form.is_valid():
             evento                      = form.save(commit = False)
-            
             destino                     = Destino()
             destino.calle               = form.cleaned_data['calle']
             destino.codigopostal        = form.cleaned_data['codigoPostal']
             destino.save()
             evento.destino              = destino
-            
             evento.Promotor             = request.user.promotor
             evento.save()
             return HttpResponseRedirect("/miseventos")
