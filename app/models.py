@@ -21,7 +21,7 @@ class Destino(models.Model):
         return "%s" % (self.calle)
         
 class TipoEvento(models.Model):
-    nombretipoevento  = models.CharField(('Tipo de Evento'),max_length = 45)
+    tipoevento  = models.CharField(('Tipo de Evento'),max_length = 45)
     detallesevento    = models.CharField(('Detalles del Evento'),max_length = 45)
 
     def __unicode__(self):
@@ -67,7 +67,7 @@ class Cliente(models.Model):
     ('','---- Seleccione ---'),
     ('m','Masculino'),
     ('f','Femenino'),
-)
+    )
 
     nombre          = models.CharField(max_length = 20)
     apellidos       = models.CharField(max_length = 45)
@@ -105,22 +105,12 @@ class Ruta(models.Model):
     def __unicode__(self):
         return "%s" % (self.logitud)
 
- 
- #class Preferencia(models.Model):
-	 #logitud = models.FloatField()
-   	 #cliente = models.ForeignKey(Cliente)
-
-   	 #def __unicode__(self):
-        # return str(self.logitud)
-	
-
- #class ClientePreferencia(models.Model):
-    # cliente = models.ForeignKey(Cliente)
-     #Preferencia = models.ForeignKey(Preferencia)
-
-
-    # def __unicode__(self):
-        #return u'%s'% str(self.cliente) #
+class Preferencia(models.Model):
+	identifcador = models.IntegerField()
+  
+class ClientePreferencia(models.Model):
+  cliente     = models.ForeignKey(Cliente)
+  preferencia = models.ForeignKey(Preferencia)
 
      
 class Academia(models.Model):

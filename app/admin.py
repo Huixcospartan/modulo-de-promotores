@@ -18,10 +18,10 @@ class DestinoAdmin(admin.ModelAdmin):
 	list_editable=('calle','codigopostal')
 
 class TipoEventoAdmin(admin.ModelAdmin):
-	list_display=('id','nombretipoevento','detallesevento')
-	list_filter =('nombretipoevento',)
-	search_fields =('nombretipoevento',)
-	list_editable=('nombretipoevento','detallesevento')
+	list_display=('id','tipoevento','detallesevento')
+	list_filter =('tipoevento',)
+	search_fields =('tipoevento',)
+	list_editable=('tipoevento','detallesevento')
 
 class EventoAdmin(admin.ModelAdmin):
 	list_display=('id','titulo','descripcipn','Promotor','fechaevento','hora','tipoevento','costo','destino','activo','imagen','evento_imagen',)
@@ -73,5 +73,6 @@ admin.site.register(Ruta,RutaAdmin)
 admin.site.register(Entretenimiento,EntretenimientoAdmin)
 admin.site.register(Cultural,CulturalAdmin)
 admin.site.register(Cliente,ClienteAdmin)
-#admin.site.register(Preferencia,preferenciaAdmin)
+#admin.site.register(ClientePreferencia)
+#admin.site.register(Preferencia)
 admin.site.register(Promotor,promotorAdmin)
