@@ -97,8 +97,10 @@ def actualizar_evento(request,pk):
     #import ipdb; ipdb.set_trace()
     promotor = request.user.promotor
     evento      = get_object_or_404(Evento,pk=pk)
+    
     destino       = get_object_or_404(Destino,pk=evento.destino.id)
     formulario  = EventoForm(request.POST,request.FILES, instance=evento)
+    
     if formulario.is_valid():
         evento                      = formulario.save(commit = False)
         destino.calle               = formulario.cleaned_data['calle']
@@ -110,7 +112,8 @@ def actualizar_evento(request,pk):
         return HttpResponseRedirect("/miseventos")   
     else:
         formulario = EventoForm(instance=evento)
-
+        destino.calle ="Yoshi"
+        
     template = "editarevento.html"
     return render_to_response(template,context_instance=RequestContext(request,locals()))
 
